@@ -19,7 +19,7 @@ const perguntas = [
         {
             texto: "em pó ?",
             afirmacao: "#."
-        }
+        },
     ]
 },
 {
@@ -32,28 +32,70 @@ const perguntas = [
         {
             texto: "Normal",
             afirmacao: "#"
-        }
+        },
     ]
 },
 {
-            
-            enunciado: "Delineador em gel ou líquido?",
+    enunciado: "Delineado líquido ou em pasta?",
     alternativas: [
-
-
         {
-            texto: "À prova d'água",
+            texto: "líquido",
             afirmacao: "# "
         },
         {
-            texto: "Normal",
+            texto: "em pasta",
             afirmacao: "#"
-                
-    
-    
-        
-        }
+        },
     ]
 },
-
+{
+     enunciado: "Pó compacto ou solto?",
+    alternativas: [
+        {
+            texto: "compacto",
+            afirmacao: "# "
+        },
+        {
+            texto: "solto",
+            afirmacao: "#"
+        },
+    ]
+},
+{
+enunciado: "gloss líquido?",
+alternativas [
+    {
+        texto: "gosto",
+        afirmacao: "# "
+    },
+    {
+        texto: "não gosto",
+        afirmacao: "#"
+    },
+    ]
+},
 ]
+
+let atual = 0;
+let perguntaAtual;
+
+function mostraPergunta(){
+    caixaAlternativas.textContent="";
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntas[atual].enunciado;
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", function(){
+            atual++;
+            mostraPergunta();
+        });        
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta();
